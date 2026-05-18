@@ -29,7 +29,7 @@ const legalContent = {
       },
       {
         title: 'Contact',
-        body: 'For privacy questions, contact us at contact@vexstudio.xyz.'
+        body: 'For privacy questions, contact us at rishabhchobey95@gmail.com.'
       }
     ]
   },
@@ -61,7 +61,7 @@ const legalContent = {
       },
       {
         title: 'Contact',
-        body: 'For questions about these terms, contact us at contact@vexstudio.xyz.'
+        body: 'For questions about these terms, contact us at rishabhchobey95@gmail.com.'
       }
     ]
   }

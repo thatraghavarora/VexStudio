@@ -61,13 +61,13 @@ const Footer = () => {
         setFormData({ name: '', email: '', message: '' });
       } else {
         // Fallback to mailto if key is placeholder or rate limited
-        window.location.href = `mailto:contact@vexstudio.xyz?subject=Vex Studios Inquiry from ${encodeURIComponent(formData.name)}&body=${encodeURIComponent("From: " + formData.email + "\n\nMessage:\n" + formData.message)}`;
+        window.location.href = `mailto:rishabhchobey95@gmail.com?subject=Vex Studios Inquiry from ${encodeURIComponent(formData.name)}&body=${encodeURIComponent("From: " + formData.email + "\n\nMessage:\n" + formData.message)}`;
         setStatus({ submitting: false, submitted: true, error: null });
         setFormData({ name: '', email: '', message: '' });
       }
     } catch (err) {
       // Fallback to mailto on network error
-      window.location.href = `mailto:contact@vexstudio.xyz?subject=Vex Studios Inquiry from ${encodeURIComponent(formData.name)}&body=${encodeURIComponent("From: " + formData.email + "\n\nMessage:\n" + formData.message)}`;
+      window.location.href = `mailto:rishabhchobey95@gmail.com?subject=Vex Studios Inquiry from ${encodeURIComponent(formData.name)}&body=${encodeURIComponent("From: " + formData.email + "\n\nMessage:\n" + formData.message)}`;
       setStatus({ submitting: false, submitted: true, error: null });
       setFormData({ name: '', email: '', message: '' });
     }
