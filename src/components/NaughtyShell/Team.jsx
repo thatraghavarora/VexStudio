@@ -151,7 +151,7 @@ const Team = () => {
             {members.filter(m => m.accent).map((m) => (
               <div
                 key={m.name}
-                className="team-card group relative rounded-2xl overflow-hidden p-6 sm:p-8 md:p-10 flex flex-col w-full max-w-sm transition-all duration-500 cursor-default border border-accent/40 bg-gradient-to-br from-dark-800 to-dark-900 hover:border-accent hover:shadow-[0_0_60px_rgba(255,69,0,0.3)]"
+                className="team-card group relative rounded-2xl overflow-hidden p-6 sm:p-8 md:p-10 flex flex-col w-full max-w-sm min-h-[420px] transition-all duration-500 cursor-default border border-accent/40 bg-gradient-to-br from-dark-800 to-dark-900 hover:border-accent hover:shadow-[0_0_60px_rgba(255,69,0,0.3)]"
               >
                 <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-accent to-transparent" />
                 <div className="absolute -top-16 -right-16 w-40 h-40 rounded-full blur-3xl bg-accent/15 group-hover:bg-accent/25 transition-all duration-500 pointer-events-none" />
@@ -213,9 +213,9 @@ const Team = () => {
           {/* Connector — Desktop Fork */}
           <div className="hidden md:flex flex-col items-center w-full pointer-events-none select-none">
             {/* Vertical stem from founder */}
-            <div className="w-[1px] h-8 bg-accent/30" />
+            <div className="w-[1px] h-10 bg-accent/30" />
             {/* Horizontal bar */}
-            <div className="relative flex items-center justify-center w-full max-w-md">
+            <div className="relative flex items-center justify-center w-full max-w-2xl">
               <div className="absolute left-1/4 right-1/4 h-[1px] bg-accent/30" />
               {/* Left node */}
               <div className="absolute left-1/4 -translate-x-1/2 w-2 h-2 rounded-full bg-accent/50 border border-accent" />
@@ -223,7 +223,7 @@ const Team = () => {
               <div className="absolute right-1/4 translate-x-1/2 w-2 h-2 rounded-full bg-accent/50 border border-accent" />
             </div>
             {/* Two vertical drops */}
-            <div className="flex w-full max-w-md justify-between">
+            <div className="flex w-full max-w-2xl justify-between">
               <div className="w-[1px] h-8 bg-accent/30 ml-[calc(25%-0.5px)]" />
               <div className="w-[1px] h-8 bg-accent/30 mr-[calc(25%-0.5px)]" />
             </div>
@@ -237,7 +237,7 @@ const Team = () => {
           </div>
 
           {/* Row 2 — Co-Founders */}
-          <div className="flex flex-col md:flex-row items-center justify-center gap-8 w-full">
+          <div className="grid grid-cols-1 md:grid-cols-2 justify-items-center gap-8 w-full max-w-4xl">
             {members
               .filter(m => !m.accent)
               .sort((a, b) => (a.name === 'Raghav Arora' ? -1 : b.name === 'Raghav Arora' ? 1 : 0))
@@ -249,7 +249,7 @@ const Team = () => {
                   </div>
                 )}
                 <div
-                  className="team-card group relative rounded-2xl overflow-hidden p-6 sm:p-8 md:p-10 flex flex-col w-full max-w-sm transition-all duration-500 cursor-default border border-white/10 bg-gradient-to-br from-dark-800/60 to-dark-900 hover:border-accent/40 hover:shadow-[0_0_40px_rgba(255,69,0,0.15)]"
+                  className="team-card group relative rounded-2xl overflow-hidden p-6 sm:p-8 md:p-10 flex flex-col w-full max-w-sm min-h-[345px] transition-all duration-500 cursor-default border border-white/10 bg-gradient-to-br from-dark-800/60 to-dark-900 hover:border-accent/40 hover:shadow-[0_0_40px_rgba(255,69,0,0.15)]"
                 >
                 <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-white/15 to-transparent group-hover:via-accent/60 transition-all duration-500" />
                 <div className="absolute -top-16 -right-16 w-40 h-40 rounded-full blur-3xl bg-white/4 group-hover:bg-accent/12 transition-all duration-500 pointer-events-none" />
@@ -271,7 +271,7 @@ const Team = () => {
 
                 {/* Social Links */}
                 {(m.linkedin || m.instagram) && (
-                  <div className="flex gap-3 mt-auto">
+                  <div className="flex flex-wrap gap-3 mt-auto">
                     {m.linkedin && (
                       <a
                         href={m.linkedin}
@@ -312,7 +312,7 @@ const Team = () => {
           {/* Glow behind */}
           <div className="absolute inset-0 bg-accent/5 rounded-2xl blur-2xl pointer-events-none" />
 
-          <div className="relative border border-accent/20 bg-gradient-to-br from-dark-800/80 to-dark-900/80 backdrop-blur-md rounded-2xl px-8 md:px-16 py-12 flex flex-col md:flex-row items-center justify-between gap-8 overflow-hidden">
+          <div className="relative border border-accent/20 bg-gradient-to-br from-dark-800/80 to-dark-900/80 backdrop-blur-md rounded-2xl px-8 md:px-16 py-12 flex flex-col items-center text-center gap-5 overflow-hidden">
             {/* Top line */}
             <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-accent/50 to-transparent" />
             {/* Bottom line */}
@@ -326,41 +326,40 @@ const Team = () => {
             </div>
 
             {/* Left text */}
-            <div className="flex flex-col gap-3 text-center md:text-left">
+            <div className="flex flex-col gap-3 items-center">
               <span className="text-accent font-display text-[10px] tracking-[0.5em] uppercase font-bold">We're Growing</span>
               <h3 className="text-2xl md:text-4xl font-display font-black uppercase tracking-widest text-white leading-tight">
                 Be a Part of <br className="hidden md:block"/>
                 <span className="text-transparent" style={{ WebkitTextStroke: '1px rgba(255,69,0,0.9)' }}>The Team</span>
               </h3>
-              <p className="text-gray-500 text-sm leading-relaxed max-w-md font-sans">
+              <p className="text-gray-500 text-sm leading-relaxed max-w-2xl font-sans">
                 Passionate about horror games, world-building, or dark narratives? We're always looking for driven creators to join our underground studio.
               </p>
             </div>
-
-            {/* Right CTA */}
-            <div className="flex flex-col items-center md:items-end gap-4 shrink-0">
-              <button
-                type="button"
-                onClick={() => setShowFullTeam(true)}
-                className="px-8 py-4 border border-white/20 bg-white/5 text-white font-display font-black text-sm uppercase tracking-widest rounded-xl hover:border-accent hover:text-accent hover:bg-accent/10 transition-all duration-300"
-              >
-                View Full Team
-              </button>
-              <a
-                href="https://docs.google.com/forms/d/e/1FAIpQLSe10k18nhvFuTBKMzZZOKcF2xSjp52lQ_yss3ZJwZAp_VSGpA/viewform?usp=header"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group relative overflow-hidden flex items-center gap-3 px-8 py-4 bg-accent text-black font-display font-black text-sm uppercase tracking-widest rounded-xl hover:shadow-[0_0_30px_rgba(255,69,0,0.5)] transition-all duration-300"
-              >
-                <span className="relative z-10">Apply Now</span>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="relative z-10 group-hover:translate-x-1 transition-transform duration-300">
-                  <path d="M5 12h14M12 5l7 7-7 7"/>
-                </svg>
-                <div className="absolute inset-0 bg-white translate-x-full group-hover:translate-x-0 transition-transform duration-300 z-0" />
-              </a>
-              <span className="text-gray-600 text-[10px] uppercase tracking-widest font-display">via our official google form</span>
-            </div>
           </div>
+
+          <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+            <button
+              type="button"
+              onClick={() => setShowFullTeam(true)}
+              className="w-full sm:w-auto px-8 py-4 border border-white/20 bg-white/5 text-white font-display font-black text-sm uppercase tracking-widest rounded-xl hover:border-accent hover:text-accent hover:bg-accent/10 transition-all duration-300"
+            >
+              View Full Team
+            </button>
+            <a
+              href="https://docs.google.com/forms/d/e/1FAIpQLSe10k18nhvFuTBKMzZZOKcF2xSjp52lQ_yss3ZJwZAp_VSGpA/viewform?usp=header"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative overflow-hidden flex items-center justify-center gap-3 w-full sm:w-auto px-8 py-4 bg-accent text-black font-display font-black text-sm uppercase tracking-widest rounded-xl hover:shadow-[0_0_30px_rgba(255,69,0,0.5)] transition-all duration-300"
+            >
+              <span className="relative z-10">Apply Now</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="relative z-10 group-hover:translate-x-1 transition-transform duration-300">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+              <div className="absolute inset-0 bg-white translate-x-full group-hover:translate-x-0 transition-transform duration-300 z-0" />
+            </a>
+          </div>
+          <p className="mt-4 text-center text-gray-600 text-[10px] uppercase tracking-widest font-display">via our official google form</p>
         </div>
         </div>
 
