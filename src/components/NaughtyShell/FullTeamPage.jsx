@@ -1,6 +1,33 @@
 import React from 'react';
 import { departmentLeads, hiringRoles, members } from './Team';
 
+const MemberNode = ({ member, featured = false }) => (
+  <div className={`relative w-full ${featured ? 'max-w-sm border-accent/50 bg-accent/10 shadow-[0_0_35px_rgba(255,69,0,0.16)]' : 'border-white/15 bg-white/[0.03]'} border rounded-xl p-6 text-center overflow-hidden`}>
+    <div className="absolute -top-16 -right-16 w-36 h-36 rounded-full blur-3xl bg-accent/15 pointer-events-none" />
+    <div className="mx-auto w-24 h-24 rounded-full border border-accent/60 overflow-hidden flex items-center justify-center mb-5 bg-accent/10">
+      {member.image ? (
+        <img src={member.image} alt={member.name} className={`w-full h-full ${member.imageClass || 'object-cover object-top'}`} />
+      ) : (
+        <span className="font-display font-black text-2xl text-accent">{member.initials}</span>
+      )}
+    </div>
+    <p className="text-accent font-display text-[10px] uppercase tracking-[0.45em] mb-4">{member.role}</p>
+    <h2 className="text-white font-display font-black uppercase tracking-widest text-xl leading-tight">{member.name}</h2>
+    <div className="w-10 h-[2px] bg-accent mx-auto my-4" />
+    <p className="text-gray-500 text-xs uppercase tracking-widest leading-relaxed">{member.title}</p>
+  </div>
+);
+
+const DepartmentNode = ({ label }) => (
+  <div className="w-full border border-accent/25 bg-dark-800/70 rounded-xl p-5 text-center">
+    <p className="text-accent font-display text-[10px] uppercase tracking-[0.45em] mb-2">Department</p>
+    <h3 className="text-white font-display font-black uppercase tracking-widest text-base leading-relaxed">{label}</h3>
+    <span className="inline-flex mt-4 text-accent border border-accent/30 bg-accent/10 rounded-full px-3 py-1 text-[10px] uppercase tracking-widest font-display">
+      Hiring
+    </span>
+  </div>
+);
+
 const FullTeamPage = () => {
   const coFounders = members
     .filter((m) => !m.accent)
@@ -30,11 +57,7 @@ const FullTeamPage = () => {
 
         <div className="border border-white/10 bg-black/20 rounded-2xl p-6 md:p-10 overflow-hidden">
           <div className="flex flex-col items-center">
-            <div className="w-full max-w-sm border border-accent/50 bg-accent/10 rounded-xl p-6 text-center shadow-[0_0_35px_rgba(255,69,0,0.16)]">
-              <p className="text-accent font-display text-[10px] uppercase tracking-[0.45em] mb-3">Founder</p>
-              <h2 className="text-white font-display font-black uppercase tracking-widest text-xl">Rishabh Chobey</h2>
-              <p className="text-gray-500 text-xs uppercase tracking-widest mt-3">Creative Direction / Unreal Development</p>
-            </div>
+            <MemberNode member={members.find((member) => member.accent)} featured />
 
             <div className="w-[1px] h-12 bg-accent/40" />
             <div className="hidden md:block w-full max-w-5xl h-[1px] bg-accent/30" />
@@ -48,21 +71,11 @@ const FullTeamPage = () => {
                   <div key={member.name} className="relative flex flex-col items-center">
                     <div className="hidden md:block absolute left-1/2 -top-8 w-[1px] h-8 bg-accent/30" />
 
-                    <div className="w-full border border-white/15 bg-white/[0.03] rounded-xl p-6 text-center">
-                      <p className="text-accent font-display text-[10px] uppercase tracking-[0.45em] mb-3">Co-Founder</p>
-                      <h3 className="text-white font-display font-black uppercase tracking-widest text-lg">{member.name}</h3>
-                      <p className="text-gray-500 text-xs uppercase tracking-widest mt-3">{member.title}</p>
-                    </div>
+                    <MemberNode member={member} />
 
                     <div className="w-[1px] h-8 bg-white/20" />
 
-                    <div className="w-full border border-white/10 bg-dark-800/50 rounded-xl p-5 text-center">
-                      <p className="text-accent font-display text-[10px] uppercase tracking-[0.45em] mb-2">Department</p>
-                      <h4 className="text-white font-display font-black uppercase tracking-widest text-base">{lead?.label}</h4>
-                      <span className="inline-flex mt-4 text-accent border border-accent/30 bg-accent/10 rounded-full px-3 py-1 text-[10px] uppercase tracking-widest font-display">
-                        Hiring
-                      </span>
-                    </div>
+                    <DepartmentNode label={lead?.label} />
 
                     <div className="w-[1px] h-8 bg-white/20" />
                     <div className="relative w-full">
