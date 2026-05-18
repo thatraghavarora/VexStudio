@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GDD — The Good Son | Rishabh Chobey</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="fonts.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"DM Sans"', 'sans-serif'],
+                        heading: ['"Space Grotesk"', 'sans-serif']
+                    },
+                    colors: {
+                        primary: '#1f2937',
+                        secondary: '#4b5563',
+                        accent: '#dc2626',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Old Roblox Cursor */
+        *,
+        *::before,
+        *::after {
+            cursor: url('Old Roblox/cursor-32.png'), auto !important;
+        }
+
+        a,
+        a *,
+        button,
+        button *,
+        [onclick] {
+            cursor: url('Old Roblox/pointer-32.png'), pointer !important;
+        }
+
+        ul.custom-bullets {
+            list-style-type: disc;
+            padding-left: 1.25rem;
+        }
+
+        ul.custom-bullets li::marker {
+            color: #6b7280;
+            font-size: 0.8em;
+        }
+
+        .section-divider {
+            border-top: 2px solid #e5e7eb;
+            margin: 1.5rem 0;
+        }
+
+        .tag {
+            display: inline-block;
+            border: 1px solid #d1d5db;
+            border-radius: 4px;
+            padding: 2px 10px;
+            font-size: 0.8rem;
+            color: #4b5563;
+            margin: 2px;
+        }
+
+        .tag-accent {
+            border-color: #fca5a5;
+            color: #dc2626;
+            background: #fef2f2;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100 min-h-screen flex justify-center py-10 px-4">
+
+    <div id="resume-content" class="bg-white max-w-[850px] w-full shadow-xl rounded-sm p-10 sm:p-14">
+
+        <!-- Header -->
+        <header class="mb-10">
+            <div class="flex items-center justify-between mb-1">
+                <div>
+                    <h1 class="text-3xl font-semibold text-primary tracking-wide">The Good Son</h1>
+                    <p class="text-lg text-accent font-medium italic">Psychological Horror Game</p>
+                </div>
+                <div class="text-right text-sm text-secondary">
+                    <p class="font-semibold text-primary">Game Design Document</p>
+                    <p>Version 1.0</p>
+                    <p>By Rishabh Chobey</p>
+                </div>
+            </div>
+            <div class="section-divider"></div>
+        </header>
+
+        <!-- Overview -->
+        <section class="mb-8">
+            <h2 class="text-xl font-semibold text-primary mb-3"><i class="fa-solid fa-gamepad mr-2 text-accent"></i>Game
+                Overview</h2>
+            <div class="grid grid-cols-2 gap-4 text-sm mb-4">
+                <div><span class="font-semibold text-primary">Genre:</span> <span class="text-secondary">Psychological
+                        Horror</span></div>
+                <div><span class="font-semibold text-primary">Engine:</span> <span class="text-secondary">Unreal Engine
+                        5</span></div>
+                <div><span class="font-semibold text-primary">Platform:</span> <span class="text-secondary">PC
+                        (Windows)</span></div>
+                <div><span class="font-semibold text-primary">Perspective:</span> <span class="text-secondary">First
+                        Person</span></div>
+                <div><span class="font-semibold text-primary">Dev Time:</span> <span class="text-secondary">~6
+                        Months</span></div>
+                <div><span class="font-semibold text-primary">Team Size:</span> <span class="text-secondary">Solo
+                        Developer</span></div>
+            </div>
+            <p class="text-sm text-primary leading-relaxed">
+                <strong>The Good Son</strong> is a first-person psychological horror game where you play as a 7-year-old
+                boy
+                trying to survive life with his abusive stepmother. Rather than relying on jump scares, the game builds
+                tension
+                through atmosphere, environmental storytelling, and a unique <strong>anxiety meter</strong> system.
+                The tagline: <em>"He doesn't have health. He has anxiety."</em>
+            </p>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- Story & Setting -->
+        <section class="mb-8">
+            <h2 class="text-xl font-semibold text-primary mb-3"><i class="fa-solid fa-book mr-2 text-accent"></i>Story &
+                Narrative</h2>
+            <p class="text-sm text-primary leading-relaxed mb-3">
+                You are a young boy trapped in a house with your violent stepmother. Your real mother is gone.
+                Every night, you must survive her rage, complete tasks she demands, and find moments of safety.
+                The game explores themes of childhood trauma, fear, and survival through environmental storytelling,
+                notes scattered around the house, and escalating nightly events.
+            </p>
+            <ul class="custom-bullets text-sm text-primary space-y-1">
+                <li>Non-linear narrative revealed through collectible notes and environmental details</li>
+                <li>Multiple endings based on player choices and anxiety management</li>
+                <li>Escalating tension across a multi-night structure</li>
+            </ul>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- Core Mechanics -->
+        <section class="mb-8">
+            <h2 class="text-xl font-semibold text-primary mb-3"><i class="fa-solid fa-gears mr-2 text-accent"></i>Core
+                Mechanics</h2>
+
+            <h3 class="font-semibold text-primary text-sm mb-2">Anxiety Meter System</h3>
+            <p class="text-sm text-primary leading-relaxed mb-3">
+                Instead of a traditional health bar, the player has an <strong>anxiety meter</strong>. Anxiety increases
+                when
+                the stepmother is nearby, when hiding in dark places too long, or during scripted events. If anxiety
+                maxes out,
+                the player has a panic attack — causing visual distortion, heavy breathing, and potential detection.
+            </p>
+
+            <h3 class="font-semibold text-primary text-sm mb-2">Night Survival Mechanic</h3>
+            <ul class="custom-bullets text-sm text-primary space-y-1 mb-3">
+                <li>Each night has tasks the player must complete while avoiding the stepmother</li>
+                <li>Dynamic AI patrols — the stepmother's behavior escalates each night</li>
+                <li>Hiding spots, distractions, and environmental interactions for evasion</li>
+            </ul>
+
+            <h3 class="font-semibold text-primary text-sm mb-2">Interaction System</h3>
+            <ul class="custom-bullets text-sm text-primary space-y-1">
+                <li>Pick up, inspect, and use objects in the environment</li>
+                <li>Light switches affect visibility and anxiety levels</li>
+                <li>Door mechanics — locking, peeking, and barricading</li>
+            </ul>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- Visual & Audio Design -->
+        <section class="mb-8">
+            <h2 class="text-xl font-semibold text-primary mb-3"><i
+                    class="fa-solid fa-palette mr-2 text-accent"></i>Visual & Audio Design</h2>
+            <ul class="custom-bullets text-sm text-primary space-y-1">
+                <li>Atmospheric lighting — dynamic shadows, flickering lights, volumetric fog</li>
+                <li>Custom 3D assets modeled in <strong>Blender</strong> for the entire house environment</li>
+                <li>Post-processing effects: vignetting, chromatic aberration during high anxiety</li>
+                <li>Emissive materials for eerie ambient glow effects</li>
+                <li>Sound design: creaking floors, distant footsteps, muffled dialogue, heartbeat audio cues</li>
+            </ul>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- Technical Implementation -->
+        <section class="mb-8">
+            <h2 class="text-xl font-semibold text-primary mb-3"><i
+                    class="fa-solid fa-code mr-2 text-accent"></i>Technical Implementation</h2>
+            <div class="flex flex-wrap gap-1 mb-4">
+                <span class="tag">Unreal Engine 5</span>
+                <span class="tag">Blueprints</span>
+                <span class="tag">Blender</span>
+                <span class="tag">AI Behavior Trees</span>
+                <span class="tag">Lumen Lighting</span>
+                <span class="tag">Nanite</span>
+                <span class="tag">Post-Processing</span>
+                <span class="tag">Sound Design</span>
+            </div>
+            <ul class="custom-bullets text-sm text-primary space-y-1">
+                <li>AI stepmother using <strong>Behavior Trees</strong> — patrol, investigate, chase states</li>
+                <li>Blueprint-driven anxiety system with UI feedback and camera effects</li>
+                <li>Lumen global illumination for realistic, dynamic lighting</li>
+                <li>Custom interaction framework built entirely in Blueprints</li>
+                <li>Modular level design for efficient iteration</li>
+            </ul>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- Links -->
+        <section>
+            <h2 class="text-xl font-semibold text-primary mb-3"><i class="fa-solid fa-link mr-2 text-accent"></i>Links
+            </h2>
+            <div class="text-sm space-y-2">
+                <p><i class="fa-brands fa-youtube text-red-500 mr-2"></i><strong>Announcement Trailer:</strong> <a
+                        href="https://youtu.be/QXttFf6VVmk" target="_blank"
+                        class="text-accent hover:underline">youtu.be/QXttFf6VVmk</a></p>
+                <p><i class="fa-brands fa-youtube text-red-500 mr-2"></i><strong>Making-Of Devlog:</strong> <a
+                        href="https://youtu.be/19UZMaWnGFY" target="_blank"
+                        class="text-accent hover:underline">youtu.be/19UZMaWnGFY</a></p>
+                <p><i class="fa-solid fa-globe text-gray-500 mr-2"></i><strong>Portfolio:</strong> <a href="index.html"
+                        class="text-accent hover:underline">Back to Portfolio</a></p>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Download Button -->
+    <div class="fixed bottom-8 right-8 z-50" id="download-btn-wrap">
+        <button onclick="window.print()"
+            class="bg-red-600 hover:bg-red-700 text-white font-medium py-3 px-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 flex items-center gap-2 hover:-translate-y-1">
+            <i class="fa-solid fa-download"></i> Download as PDF
+        </button>
+    </div>
+
+    <style>
+        #resume-content {
+            border: 2px solid #1f2937;
+        }
+
+        @media print {
+            @page {
+                size: A4;
+                margin: 10mm;
+            }
+
+            body {
+                background: white !important;
+                padding: 0 !important;
+                margin: 0 !important;
+            }
+
+            #download-btn-wrap {
+                display: none !important;
+            }
+
+            #resume-content {
+                box-shadow: none !important;
+                max-width: 100% !important;
+                padding: 20px !important;
+                border: 2px solid #1f2937;
+            }
+        }
+    </style>
+
+</body>
+
+</html>

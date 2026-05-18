@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GDD — Andhkaar | Rishabh Chobey</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="fonts.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { 
+                        sans: ['"DM Sans"', 'sans-serif'],
+                        heading: ['"Space Grotesk"', 'sans-serif']
+                    },
+                    colors: {
+                        primary: '#1f2937',
+                        secondary: '#4b5563',
+                        accent: '#0d9488',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Old Roblox Cursor */
+        *, *::before, *::after { cursor: url('Old Roblox/cursor-32.png'), auto !important; }
+        a, a *, button, button *, [onclick] { cursor: url('Old Roblox/pointer-32.png'), pointer !important; }
+
+        ul.custom-bullets { list-style-type: disc; padding-left: 1.25rem; }
+        ul.custom-bullets li::marker { color: #6b7280; font-size: 0.8em; }
+        .section-divider { border-top: 2px solid #e5e7eb; margin: 1.5rem 0; }
+        .tag { display: inline-block; border: 1px solid #d1d5db; border-radius: 4px; padding: 2px 10px; font-size: 0.8rem; color: #4b5563; margin: 2px; }
+        .tag-accent { border-color: #99f6e4; color: #0d9488; background: #f0fdfa; }
+        .status-badge { display: inline-block; background: #f0fdfa; color: #0d9488; border: 1px solid #99f6e4; padding: 2px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: 600; }
+    </style>
+</head>
+
+<body class="bg-gray-100 min-h-screen flex justify-center py-10 px-4">
+
+    <div id="resume-content" class="bg-white max-w-[850px] w-full shadow-xl rounded-sm p-10 sm:p-14">
+
+        <!-- Header -->
+        <header class="mb-10">
+            <div class="flex items-center justify-between mb-1">
+                <div>
+                    <h1 class="text-3xl font-semibold text-primary tracking-wide">Andhkaar
+                        <span class="status-badge ml-2">In Development</span>
+                    </h1>
+                    <p class="text-lg text-accent font-medium italic mt-1">Horror Puzzle Game</p>
+                </div>
+                <div class="text-right text-sm text-secondary">
+                    <p class="font-semibold text-primary">Game Design Document</p>
+                    <p>Version 0.9 (WIP)</p>
+                    <p>By Rishabh Chobey</p>
+                </div>
+            </div>
+            <div class="section-divider"></div>
+        </header>
+
+        <!-- Overview -->
+        <section class="mb-8">
+            <h2 class="text-xl font-semibold text-primary mb-3"><i class="fa-solid fa-gamepad mr-2 text-accent"></i>Game Overview</h2>
+            <div class="grid grid-cols-2 gap-4 text-sm mb-4">
+                <div><span class="font-semibold text-primary">Genre:</span> <span class="text-secondary">Horror Puzzle</span></div>
+                <div><span class="font-semibold text-primary">Engine:</span> <span class="text-secondary">Unreal Engine 5</span></div>
+                <div><span class="font-semibold text-primary">Platform:</span> <span class="text-secondary">PC (Windows)</span></div>
+                <div><span class="font-semibold text-primary">Perspective:</span> <span class="text-secondary">First Person</span></div>
+                <div><span class="font-semibold text-primary">Status:</span> <span class="text-secondary">Currently Under Development</span></div>
+                <div><span class="font-semibold text-primary">Team Size:</span> <span class="text-secondary">Solo Developer</span></div>
+            </div>
+            <p class="text-sm text-primary leading-relaxed">
+                <strong>Andhkaar</strong> (Hindi for "darkness") is a first-person horror puzzle game that combines
+                intricate puzzle mechanics with a suspenseful horror atmosphere. Players must navigate dark, interconnected
+                environments, solve environmental and inventory-based puzzles, and piece together a disturbing narrative
+                — all while managing limited resources and avoiding lurking dangers.
+            </p>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- Core Mechanics -->
+        <section class="mb-8">
+            <h2 class="text-xl font-semibold text-primary mb-3"><i class="fa-solid fa-gears mr-2 text-accent"></i>Core Mechanics</h2>
+            
+            <h3 class="font-semibold text-primary text-sm mb-2">Puzzle System</h3>
+            <ul class="custom-bullets text-sm text-primary space-y-1 mb-3">
+                <li>Environmental puzzles — manipulate objects, levers, and mechanisms in the world</li>
+                <li>Logic puzzles — pattern recognition, combination locks, and sequential challenges</li>
+                <li>Multi-step puzzles requiring items from different areas</li>
+                <li>Puzzle difficulty escalates as the player progresses deeper into the environment</li>
+            </ul>
+
+            <h3 class="font-semibold text-primary text-sm mb-2">Inventory System</h3>
+            <ul class="custom-bullets text-sm text-primary space-y-1 mb-3">
+                <li>Grid-based inventory with limited capacity — forces strategic item management</li>
+                <li>Item inspection — rotate and examine objects for hidden clues</li>
+                <li>Combine items to create new tools or keys</li>
+                <li>Key items vs. consumables — different storage priorities</li>
+            </ul>
+
+            <h3 class="font-semibold text-primary text-sm mb-2">Exploration & Horror</h3>
+            <ul class="custom-bullets text-sm text-primary space-y-1">
+                <li>Non-linear exploration with gated progression through puzzle solving</li>
+                <li>Dynamic horror events — scripted and randomized scares</li>
+                <li>Limited light sources — flashlight with battery management</li>
+                <li>Environmental hazards that require observation and caution</li>
+            </ul>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- Visual Design -->
+        <section class="mb-8">
+            <h2 class="text-xl font-semibold text-primary mb-3"><i class="fa-solid fa-palette mr-2 text-accent"></i>Visual & Atmosphere Design</h2>
+            <ul class="custom-bullets text-sm text-primary space-y-1">
+                <li><strong>Emissive material effects</strong> for atmospheric, eerie glow on objects and surfaces</li>
+                <li>Heavy use of darkness and shadow — the player's flashlight is their primary sight tool</li>
+                <li>Volumetric fog and particle effects for environmental depth</li>
+                <li>Custom 3D assets and environment props modeled in <strong>Blender</strong></li>
+                <li>Color palette: deep blacks, muted teals, and warm amber highlights for contrast</li>
+                <li>Post-processing: film grain, subtle chromatic aberration, and dynamic exposure</li>
+            </ul>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- Level Design -->
+        <section class="mb-8">
+            <h2 class="text-xl font-semibold text-primary mb-3"><i class="fa-solid fa-map mr-2 text-accent"></i>Level Design Philosophy</h2>
+            <ul class="custom-bullets text-sm text-primary space-y-1">
+                <li>Interconnected rooms — shortcuts unlock as puzzles are solved</li>
+                <li>Environmental storytelling through visual details, notes, and object placement</li>
+                <li>Safe rooms for inventory management and narrative exposition</li>
+                <li>Vertical and horizontal exploration with hidden areas</li>
+                <li>Suspenseful pacing — quiet exploration punctuated by horror encounters</li>
+            </ul>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- Technical Implementation -->
+        <section class="mb-8">
+            <h2 class="text-xl font-semibold text-primary mb-3"><i class="fa-solid fa-code mr-2 text-accent"></i>Technical Implementation</h2>
+            <div class="flex flex-wrap gap-1 mb-4">
+                <span class="tag">Unreal Engine 5</span>
+                <span class="tag">Blueprints</span>
+                <span class="tag">Blender</span>
+                <span class="tag">Inventory System</span>
+                <span class="tag">Puzzle Logic</span>
+                <span class="tag">Emissive Materials</span>
+                <span class="tag">Interaction System</span>
+                <span class="tag">Save/Load</span>
+            </div>
+            <ul class="custom-bullets text-sm text-primary space-y-1">
+                <li>Modular puzzle framework — puzzle components can be reused and reconfigured</li>
+                <li>Inventory system with UI built entirely in <strong>UMG (Unreal Motion Graphics)</strong></li>
+                <li>Interactive object system using Blueprint interfaces</li>
+                <li>Save/Load system for persistent game state across sessions</li>
+                <li>Dynamic lighting with baked and real-time shadows for performance balance</li>
+            </ul>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- Current Status -->
+        <section>
+            <h2 class="text-xl font-semibold text-primary mb-3"><i class="fa-solid fa-clock mr-2 text-accent"></i>Current Development Status</h2>
+            <div class="text-sm space-y-2 text-primary">
+                <p>✅ Core puzzle mechanics — implemented</p>
+                <p>✅ Inventory system — implemented</p>
+                <p>✅ Interaction framework — implemented</p>
+                <p>🔄 Level design — in progress</p>
+                <p>🔄 Horror event scripting — in progress</p>
+                <p>⬜ Audio design — planned</p>
+                <p>⬜ Final polish & optimization — planned</p>
+            </div>
+            <p class="text-sm text-secondary mt-4 italic">
+                <i class="fa-solid fa-globe mr-1"></i><a href="index.html" class="text-accent hover:underline">Back to Portfolio</a>
+            </p>
+        </section>
+
+    </div>
+
+    <!-- Download Button -->
+    <div class="fixed bottom-8 right-8 z-50" id="download-btn-wrap">
+        <button onclick="window.print()"
+            class="bg-teal-600 hover:bg-teal-700 text-white font-medium py-3 px-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 flex items-center gap-2 hover:-translate-y-1">
+            <i class="fa-solid fa-download"></i> Download as PDF
+        </button>
+    </div>
+
+    <style>
+        #resume-content { border: 2px solid #1f2937; }
+
+        @media print {
+            @page { size: A4; margin: 10mm; }
+            body { background: white !important; padding: 0 !important; margin: 0 !important; }
+            #download-btn-wrap { display: none !important; }
+            #resume-content {
+                box-shadow: none !important;
+                max-width: 100% !important;
+                padding: 20px !important;
+                border: 2px solid #1f2937;
+            }
+        }
+    </style>
+
+</body>
+</html>

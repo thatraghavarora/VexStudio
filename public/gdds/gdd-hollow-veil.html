@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GDD — Hollow Veil | Rishabh Chobey</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="fonts.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { 
+                        sans: ['"DM Sans"', 'sans-serif'],
+                        heading: ['"Space Grotesk"', 'sans-serif']
+                    },
+                    colors: {
+                        primary: '#1f2937',
+                        secondary: '#4b5563',
+                        accent: '#7c3aed',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Old Roblox Cursor */
+        *, *::before, *::after { cursor: url('Old Roblox/cursor-32.png'), auto !important; }
+        a, a *, button, button *, [onclick] { cursor: url('Old Roblox/pointer-32.png'), pointer !important; }
+
+        ul.custom-bullets { list-style-type: disc; padding-left: 1.25rem; }
+        ul.custom-bullets li::marker { color: #6b7280; font-size: 0.8em; }
+        .section-divider { border-top: 2px solid #e5e7eb; margin: 1.5rem 0; }
+        .tag { display: inline-block; border: 1px solid #d1d5db; border-radius: 4px; padding: 2px 10px; font-size: 0.8rem; color: #4b5563; margin: 2px; }
+        .tag-accent { border-color: #c4b5fd; color: #7c3aed; background: #f5f3ff; }
+    </style>
+</head>
+
+<body class="bg-gray-100 min-h-screen flex justify-center py-10 px-4">
+
+    <div id="resume-content" class="bg-white max-w-[850px] w-full shadow-xl rounded-sm p-10 sm:p-14">
+
+        <!-- Header -->
+        <header class="mb-10">
+            <div class="flex items-center justify-between mb-1">
+                <div>
+                    <h1 class="text-3xl font-semibold text-primary tracking-wide">Hollow Veil</h1>
+                    <p class="text-lg text-accent font-medium italic">RPG Souls-like (Experimental)</p>
+                </div>
+                <div class="text-right text-sm text-secondary">
+                    <p class="font-semibold text-primary">Game Design Document</p>
+                    <p>Version 1.0</p>
+                    <p>By Rishabh Chobey</p>
+                </div>
+            </div>
+            <div class="section-divider"></div>
+        </header>
+
+        <!-- Overview -->
+        <section class="mb-8">
+            <h2 class="text-xl font-semibold text-primary mb-3"><i class="fa-solid fa-gamepad mr-2 text-accent"></i>Game Overview</h2>
+            <div class="grid grid-cols-2 gap-4 text-sm mb-4">
+                <div><span class="font-semibold text-primary">Genre:</span> <span class="text-secondary">Action RPG / Souls-like</span></div>
+                <div><span class="font-semibold text-primary">Engine:</span> <span class="text-secondary">Unreal Engine 5</span></div>
+                <div><span class="font-semibold text-primary">Platform:</span> <span class="text-secondary">PC (Windows)</span></div>
+                <div><span class="font-semibold text-primary">Perspective:</span> <span class="text-secondary">Third Person</span></div>
+                <div><span class="font-semibold text-primary">Status:</span> <span class="text-secondary">Experimental Prototype</span></div>
+                <div><span class="font-semibold text-primary">Team Size:</span> <span class="text-secondary">Solo Developer</span></div>
+            </div>
+            <p class="text-sm text-primary leading-relaxed">
+                <strong>Hollow Veil</strong> is an experimental action RPG inspired by the Souls-like genre. It features
+                stamina-based combat, complex dodge mechanics, stealth kill systems, and sword combo montages — all
+                engineered from scratch using Unreal Engine 5 Blueprints. This project served as a deep-dive into
+                advanced combat system design and enemy AI programming.
+            </p>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- Core Mechanics -->
+        <section class="mb-8">
+            <h2 class="text-xl font-semibold text-primary mb-3"><i class="fa-solid fa-gears mr-2 text-accent"></i>Combat System</h2>
+            
+            <h3 class="font-semibold text-primary text-sm mb-2">Stamina-Based Combat</h3>
+            <ul class="custom-bullets text-sm text-primary space-y-1 mb-3">
+                <li>Every action (attacking, dodging, sprinting) consumes stamina</li>
+                <li>Stamina regeneration rate varies based on player state (idle vs. guarding)</li>
+                <li>Over-exertion leaves the player vulnerable — strategic pacing is key</li>
+            </ul>
+
+            <h3 class="font-semibold text-primary text-sm mb-2">Sword Combo System</h3>
+            <ul class="custom-bullets text-sm text-primary space-y-1 mb-3">
+                <li>Multi-hit combo chains using <strong>Animation Montages</strong></li>
+                <li>Light and heavy attack variations with different damage and speed profiles</li>
+                <li>Combo windows — timing-based inputs for chaining attacks</li>
+                <li>Animation-driven hit detection using <strong>Anim Notify</strong> events</li>
+            </ul>
+
+            <h3 class="font-semibold text-primary text-sm mb-2">Dodge & Evasion</h3>
+            <ul class="custom-bullets text-sm text-primary space-y-1 mb-3">
+                <li>Directional dodge rolls with i-frames (invincibility frames)</li>
+                <li>Dodge canceling — allows breaking out of attack animations</li>
+                <li>Stamina cost per dodge forces strategic use</li>
+            </ul>
+
+            <h3 class="font-semibold text-primary text-sm mb-2">Stealth Kill Mechanic</h3>
+            <ul class="custom-bullets text-sm text-primary space-y-1">
+                <li>Backstab system for unaware enemies — instant kill with unique animation</li>
+                <li>Detection based on enemy awareness cone and noise levels</li>
+                <li>Crouch movement reduces detection range</li>
+            </ul>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- Enemy AI -->
+        <section class="mb-8">
+            <h2 class="text-xl font-semibold text-primary mb-3"><i class="fa-solid fa-robot mr-2 text-accent"></i>Enemy AI Design</h2>
+            <ul class="custom-bullets text-sm text-primary space-y-1">
+                <li>AI-driven enemies with patrol, chase, attack, and retreat states</li>
+                <li><strong>Behavior Trees</strong> for state management and decision-making</li>
+                <li>Enemy attack patterns with telegraphed animations for player readability</li>
+                <li>Aggression scaling — enemies become more aggressive at low health</li>
+                <li>Group awareness — nearby enemies can be alerted during combat</li>
+            </ul>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- Technical Implementation -->
+        <section class="mb-8">
+            <h2 class="text-xl font-semibold text-primary mb-3"><i class="fa-solid fa-code mr-2 text-accent"></i>Technical Implementation</h2>
+            <div class="flex flex-wrap gap-1 mb-4">
+                <span class="tag">Unreal Engine 5</span>
+                <span class="tag">Blueprints</span>
+                <span class="tag">Animation Montages</span>
+                <span class="tag">Anim Notify</span>
+                <span class="tag">Behavior Trees</span>
+                <span class="tag">AI Perception</span>
+                <span class="tag">Collision System</span>
+                <span class="tag">IK (Inverse Kinematics)</span>
+            </div>
+            <ul class="custom-bullets text-sm text-primary space-y-1">
+                <li>Entire combat system built in <strong>Blueprints</strong> — no C++ required</li>
+                <li>Custom <strong>Damage System</strong> with damage types, resistances, and critical hits</li>
+                <li>Animation-driven combat using <strong>Montages</strong> and <strong>Anim Notifies</strong> for hit windows</li>
+                <li>AI enemies using <strong>UE5 AI Perception System</strong> for sight and hearing detection</li>
+                <li>Modular weapon system allowing for future weapon variety</li>
+            </ul>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- Design Goals -->
+        <section>
+            <h2 class="text-xl font-semibold text-primary mb-3"><i class="fa-solid fa-bullseye mr-2 text-accent"></i>Design Goals & Learnings</h2>
+            <ul class="custom-bullets text-sm text-primary space-y-1">
+                <li>Master complex combat system architecture in UE5</li>
+                <li>Understand animation-driven gameplay and montage systems</li>
+                <li>Implement challenging but fair enemy AI behavior</li>
+                <li>Explore stamina management as a core balancing mechanic</li>
+                <li>This experimental project informed combat design approaches for future titles</li>
+            </ul>
+            <p class="text-sm text-secondary mt-4 italic">
+                <i class="fa-solid fa-globe mr-1"></i><a href="index.html" class="text-accent hover:underline">Back to Portfolio</a>
+            </p>
+        </section>
+
+    </div>
+
+    <!-- Download Button -->
+    <div class="fixed bottom-8 right-8 z-50" id="download-btn-wrap">
+        <button onclick="window.print()"
+            class="bg-violet-600 hover:bg-violet-700 text-white font-medium py-3 px-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 flex items-center gap-2 hover:-translate-y-1">
+            <i class="fa-solid fa-download"></i> Download as PDF
+        </button>
+    </div>
+
+    <style>
+        #resume-content { border: 2px solid #1f2937; }
+
+        @media print {
+            @page { size: A4; margin: 10mm; }
+            body { background: white !important; padding: 0 !important; margin: 0 !important; }
+            #download-btn-wrap { display: none !important; }
+            #resume-content {
+                box-shadow: none !important;
+                max-width: 100% !important;
+                padding: 20px !important;
+                border: 2px solid #1f2937;
+            }
+        }
+    </style>
+
+</body>
+</html>
