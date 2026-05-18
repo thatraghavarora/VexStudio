@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -39,8 +39,36 @@ const members = [
   },
 ];
 
+const hiringRoles = [
+  {
+    title: 'Social Media Manager',
+    detail: 'Hiring: we are looking for someone who can plan posts, manage community updates, and shape the public voice of Vex Studios.'
+  },
+  {
+    title: 'Game Script Writer',
+    detail: 'Hiring: we are looking for a writer who can build dark stories, character moments, dialogue, objectives, and horror narrative beats.'
+  },
+  {
+    title: 'Game UI / UX Designer',
+    detail: 'Hiring: we are looking for a designer who can create clean game interfaces, menus, HUD flows, and player-friendly interaction systems.'
+  },
+  {
+    title: 'Sound / Effect Designer',
+    detail: 'Hiring: we are looking for a sound-focused creator who can design atmospheric audio, SFX, ambience, and tension-building moments.'
+  },
+  {
+    title: 'Web Developer',
+    detail: 'Hiring: we are looking for a web developer who can build sharp, responsive, cinematic web experiences for Vex Studios.'
+  },
+  {
+    title: 'Game Developer',
+    detail: 'Hiring: we are looking for a developer who can work on Unreal Engine gameplay, mechanics, Blueprints, prototyping, and systems.'
+  },
+];
+
 const Team = () => {
   const sectionRef = useRef(null);
+  const [showFullTeam, setShowFullTeam] = useState(false);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -311,6 +339,13 @@ const Team = () => {
 
             {/* Right CTA */}
             <div className="flex flex-col items-center md:items-end gap-4 shrink-0">
+              <button
+                type="button"
+                onClick={() => setShowFullTeam(true)}
+                className="px-8 py-4 border border-white/20 bg-white/5 text-white font-display font-black text-sm uppercase tracking-widest rounded-xl hover:border-accent hover:text-accent hover:bg-accent/10 transition-all duration-300"
+              >
+                View Full Team
+              </button>
               <a
                 href="https://docs.google.com/forms/d/e/1FAIpQLSe10k18nhvFuTBKMzZZOKcF2xSjp52lQ_yss3ZJwZAp_VSGpA/viewform?usp=header"
                 target="_blank"
@@ -330,6 +365,90 @@ const Team = () => {
         </div>
 
       </div>
+
+      {showFullTeam && (
+        <div className="fixed inset-0 z-[120] bg-black/90 backdrop-blur-xl overflow-y-auto px-4 py-8 md:p-10">
+          <div className="max-w-7xl mx-auto border border-white/10 bg-dark-900 rounded-2xl overflow-hidden shadow-[0_0_80px_rgba(255,69,0,0.18)]">
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 p-6 md:p-8 border-b border-white/10 bg-gradient-to-r from-dark-800 to-dark-900">
+              <div>
+                <p className="text-accent font-display text-[10px] tracking-[0.5em] uppercase font-bold mb-3">Vex Studios</p>
+                <h3 className="text-3xl md:text-5xl font-display font-black uppercase tracking-widest text-white">
+                  Full Team Graph
+                </h3>
+              </div>
+              <button
+                type="button"
+                onClick={() => setShowFullTeam(false)}
+                className="self-start md:self-center w-11 h-11 rounded-full border border-white/20 text-white hover:border-accent hover:text-accent transition-colors text-xl leading-none"
+                aria-label="Close full team graph"
+              >
+                X
+              </button>
+            </div>
+
+            <div className="p-6 md:p-10">
+              <div className="flex flex-col items-center">
+                <div className="w-full max-w-sm border border-accent/50 bg-accent/10 rounded-xl p-6 text-center shadow-[0_0_35px_rgba(255,69,0,0.16)]">
+                  <p className="text-accent font-display text-[10px] uppercase tracking-[0.45em] mb-3">Founder</p>
+                  <h4 className="text-white font-display font-black uppercase tracking-widest text-xl">Rishabh Chobey</h4>
+                  <p className="text-gray-500 text-xs uppercase tracking-widest mt-3">Creative Direction / Unreal Development</p>
+                </div>
+
+                <div className="w-[1px] h-10 bg-accent/40" />
+                <div className="hidden md:block w-full max-w-2xl h-[1px] bg-accent/30" />
+                <div className="grid md:grid-cols-2 gap-6 w-full max-w-3xl mt-0 md:mt-6">
+                  {members
+                    .filter(m => !m.accent)
+                    .sort((a, b) => (a.name === 'Raghav Arora' ? -1 : b.name === 'Raghav Arora' ? 1 : 0))
+                    .map((member) => (
+                      <div key={member.name} className="relative border border-white/15 bg-white/[0.03] rounded-xl p-6 text-center">
+                        <div className="hidden md:block absolute left-1/2 -top-6 w-[1px] h-6 bg-accent/30" />
+                        <p className="text-accent font-display text-[10px] uppercase tracking-[0.45em] mb-3">Co-Founder</p>
+                        <h4 className="text-white font-display font-black uppercase tracking-widest text-lg">{member.name}</h4>
+                        <p className="text-gray-500 text-xs uppercase tracking-widest mt-3">{member.title}</p>
+                      </div>
+                    ))}
+                </div>
+
+                <div className="w-[1px] h-12 bg-white/20" />
+                <div className="w-full border border-white/10 bg-black/20 rounded-xl p-5 md:p-6">
+                  <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6">
+                    <div>
+                      <p className="text-accent font-display text-[10px] uppercase tracking-[0.45em] mb-3">Open Positions</p>
+                      <h4 className="text-white font-display font-black uppercase tracking-widest text-2xl">Hiring Team</h4>
+                    </div>
+                    <a
+                      href="/internship"
+                      className="text-accent hover:text-white font-display text-xs uppercase tracking-widest transition-colors"
+                    >
+                      Apply for Internship
+                    </a>
+                  </div>
+
+                  <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                    {hiringRoles.map((role, index) => (
+                      <article key={role.title} className="border border-white/10 bg-dark-800/70 rounded-lg p-5 hover:border-accent/50 transition-colors">
+                        <div className="flex items-center justify-between gap-3 mb-4">
+                          <span className="text-gray-600 font-display text-xs uppercase tracking-widest">0{index + 1}</span>
+                          <span className="text-accent border border-accent/30 bg-accent/10 rounded-full px-3 py-1 text-[10px] uppercase tracking-widest font-display">
+                            Hiring
+                          </span>
+                        </div>
+                        <h5 className="text-white font-display font-black uppercase tracking-widest text-sm leading-relaxed mb-3">
+                          {role.title}
+                        </h5>
+                        <p className="text-gray-500 text-sm leading-relaxed">
+                          {role.detail}
+                        </p>
+                      </article>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 };
