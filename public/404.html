@@ -10,7 +10,7 @@
         var search = window.location.search || '';
         var hash = window.location.hash || '';
         var firstSegment = path.split('/').filter(Boolean)[0] || '';
-        var appRoutes = ['privacy', 'terms', 'internship'];
+        var appRoutes = ['privacy', 'terms', 'internship', 'team'];
         var base = appRoutes.indexOf(firstSegment) >= 0 ? '/' : '/' + firstSegment + '/';
         var route = encodeURIComponent(path + search + hash);
         window.location.replace(base + '?route=' + route);

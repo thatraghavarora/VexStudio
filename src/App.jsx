@@ -15,6 +15,7 @@ import Footer from './components/NaughtyShell/Footer';
 import CustomCursor from './components/NaughtyShell/CustomCursor';
 import LegalPage from './components/NaughtyShell/LegalPage';
 import InternshipPage from './components/NaughtyShell/InternshipPage';
+import FullTeamPage from './components/NaughtyShell/FullTeamPage';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -26,6 +27,7 @@ function App() {
   const routeKey = path.split('/').filter(Boolean).pop();
   const routedLegalPage = legalPage || (routeKey === 'privacy' ? 'privacy' : routeKey === 'terms' ? 'terms' : null);
   const isInternshipPage = path === '/internship' || routeKey === 'internship';
+  const isFullTeamPage = path === '/team' || routeKey === 'team';
 
   useEffect(() => {
     // Noise overlay setup is handled in CSS, GSAP global defaults can go here
@@ -41,7 +43,9 @@ function App() {
       
       <Navbar />
 
-      {isInternshipPage ? (
+      {isFullTeamPage ? (
+        <FullTeamPage />
+      ) : isInternshipPage ? (
         <InternshipPage />
       ) : routedLegalPage ? (
         <LegalPage type={routedLegalPage} />
