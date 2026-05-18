@@ -13,10 +13,14 @@ import Team from './components/NaughtyShell/Team';
 import ReviewsNews from './components/NaughtyShell/ReviewsNews';
 import Footer from './components/NaughtyShell/Footer';
 import CustomCursor from './components/NaughtyShell/CustomCursor';
+import LegalPage from './components/NaughtyShell/LegalPage';
 
 gsap.registerPlugin(ScrollTrigger);
 
 function App() {
+  const path = window.location.pathname.replace(/\/$/, '');
+  const legalPage = path === '/privacy' ? 'privacy' : path === '/terms' ? 'terms' : null;
+
   useEffect(() => {
     // Noise overlay setup is handled in CSS, GSAP global defaults can go here
     return () => {
@@ -30,17 +34,21 @@ function App() {
       <div className="noise-overlay"></div>
       
       <Navbar />
-      
-      <main>
-        <Hero />
-        <Services />
-        <TechMarquee />
-        <ProjectCarousel />
-        <Portfolio />
-        <AboutUs />
-        <Team />
-        <ReviewsNews />
-      </main>
+
+      {legalPage ? (
+        <LegalPage type={legalPage} />
+      ) : (
+        <main>
+          <Hero />
+          <Services />
+          <TechMarquee />
+          <ProjectCarousel />
+          <Portfolio />
+          <AboutUs />
+          <Team />
+          <ReviewsNews />
+        </main>
+      )}
       
       <Footer />
     </div>

@@ -15,7 +15,7 @@ const portfolioItems = [
     description: 'An action RPG with complex combat mechanics engineered from scratch — stamina-based attacking, dodging mechanics, and challenging enemy AI using Blueprints.',
     image: '/images/hollow-veil-env-3.png',
     video: '/videos/hollow-veil.mp4',
-    gddLink: '/gdds/gdd-hollow-veil.html'
+    gddLink: '/gdds/GDD%20%E2%80%94%20Hollow%20Veil%20_%20Rishabh%20Chobey.pdf'
   },
   {
     id: 'the-good-son',
@@ -25,7 +25,7 @@ const portfolioItems = [
     description: 'A complete horror experience focusing on psychological tension with atmospheric lighting, narrative-driven events, and custom 3D assets modeled in Blender.',
     image: '/images/night-system.png',
     video: '/videos/good-son.mp4',
-    gddLink: '/gdds/gdd-the-good-son.html'
+    gddLink: '/gdds/GDD%20%E2%80%94%20The%20Good%20Son%20_%20Rishabh%20Chobey.pdf'
   },
   {
     id: 'andhkaar',
@@ -36,7 +36,7 @@ const portfolioItems = [
     description: 'A horror puzzle game featuring intricate puzzle mechanics, inventory systems, suspenseful level design, and immersive problem-solving gameplay.',
     image: '/images/andhkaar-splash-1.png', 
     video: '/videos/andhkaar.mp4',
-    gddLink: '/gdds/gdd-andhkaar.html'
+    gddLink: '/gdds/GDD%20%E2%80%94%20Andhkaar%20_%20Rishabh%20Chobey.pdf'
   },
   {
     id: 'teaser',

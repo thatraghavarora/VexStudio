@@ -28,8 +28,10 @@
     </script>
     <style>
         /* Old Roblox Cursor */
-        *, *::before, *::after { cursor: url('Old Roblox/cursor-32.png'), auto !important; }
-        a, a *, button, button *, [onclick] { cursor: url('Old Roblox/pointer-32.png'), pointer !important; }
+        @media (pointer: fine) {
+            *, *::before, *::after { cursor: url('Old Roblox/cursor-32.png'), auto !important; }
+            a, a *, button, button *, [onclick] { cursor: url('Old Roblox/pointer-32.png'), pointer !important; }
+        }
 
         ul.custom-bullets { list-style-type: disc; padding-left: 1.25rem; }
         ul.custom-bullets li::marker { color: #6b7280; font-size: 0.8em; }

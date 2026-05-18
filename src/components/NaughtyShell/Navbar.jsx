@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const isHomePage = window.location.pathname === '/';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -13,6 +14,10 @@ const Navbar = () => {
   }, []);
 
   const links = ['Home', 'Services', 'Projects', 'Portfolio', 'About', 'Team', 'Community', 'Contact Us'];
+  const getLinkHref = (link) => {
+    const hash = `#${link.toLowerCase().replace(' ', '-')}`;
+    return isHomePage ? hash : `/${hash}`;
+  };
 
   return (
     <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? 'glassmorphism py-4' : 'bg-transparent py-6'}`}>
@@ -27,7 +32,7 @@ const Navbar = () => {
           {links.map((link) => (
             <a 
               key={link} 
-              href={`#${link.toLowerCase().replace(' ', '-')}`}
+              href={getLinkHref(link)}
               className="text-sm font-medium tracking-wider text-gray-300 hover:text-accent transition-colors uppercase relative group"
             >
               {link}
@@ -53,7 +58,7 @@ const Navbar = () => {
         {links.map((link) => (
           <a 
             key={link} 
-            href={`#${link.toLowerCase().replace(' ', '-')}`}
+            href={getLinkHref(link)}
             className="text-base font-medium tracking-widest text-gray-300 hover:text-accent transition-colors uppercase py-1"
             onClick={() => setMenuOpen(false)}
           >

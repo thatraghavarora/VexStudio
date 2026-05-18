@@ -8,6 +8,11 @@ const Footer = () => {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [status, setStatus] = useState({ submitting: false, submitted: false, error: null });
   const footerRef = useRef(null);
+  const isHomePage = window.location.pathname === '/';
+  const getSectionHref = (link) => {
+    const hash = `#${link.toLowerCase().replace(' ', '-')}`;
+    return isHomePage ? hash : `/${hash}`;
+  };
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -149,7 +154,7 @@ const Footer = () => {
             <div className="flex flex-col gap-4">
               <h4 className="text-accent font-bold uppercase tracking-widest text-sm mb-4">NAVIGATE</h4>
               {['Home', 'Services', 'Portfolio', 'About', 'Team', 'Community'].map(link => (
-                <a key={link} href={`#${link.toLowerCase()}`} className="text-gray-400 hover:text-white uppercase tracking-wider text-sm transition-colors">
+                <a key={link} href={getSectionHref(link)} className="text-gray-400 hover:text-white uppercase tracking-wider text-sm transition-colors">
                   {link}
                 </a>
               ))}
@@ -174,8 +179,8 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-white/10 text-xs font-medium uppercase tracking-widest text-gray-500 gap-4">
           <p>© 2026 VEX STUDIOS. ALL PROTOCOLS OBSERVED.</p>
           <div className="flex gap-8">
-            <a href="#" className="hover:text-white transition-colors">PRIVACY</a>
-            <a href="#" className="hover:text-white transition-colors">TERMS</a>
+            <a href="/privacy" className="hover:text-white transition-colors">PRIVACY</a>
+            <a href="/terms" className="hover:text-white transition-colors">TERMS</a>
           </div>
         </div>
       </div>

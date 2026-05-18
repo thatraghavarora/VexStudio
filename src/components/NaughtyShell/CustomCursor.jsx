@@ -3,10 +3,31 @@ import React, { useEffect, useRef, useState } from 'react';
 const CustomCursor = () => {
   const cursorRef = useRef(null);
   const ringRef = useRef(null);
+  const [isEnabled, setIsEnabled] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
 
   useEffect(() => {
+    const finePointerQuery = window.matchMedia('(pointer: fine)');
+
+    const syncCursorMode = () => {
+      const enabled = finePointerQuery.matches;
+      setIsEnabled(enabled);
+      document.body.classList.toggle('custom-cursor-active', enabled);
+    };
+
+    syncCursorMode();
+    finePointerQuery.addEventListener('change', syncCursorMode);
+
+    return () => {
+      finePointerQuery.removeEventListener('change', syncCursorMode);
+      document.body.classList.remove('custom-cursor-active');
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!isEnabled) return undefined;
+
     document.body.classList.add('custom-cursor-active');
 
     let mouseX = window.innerWidth / 2;
@@ -73,7 +94,9 @@ const CustomCursor = () => {
       window.removeEventListener('mouseup', handleMouseUp);
       document.removeEventListener('mouseover', handleMouseOver);
     };
-  }, []);
+  }, [isEnabled]);
+
+  if (!isEnabled) return null;
 
   return (
     <div className="fixed inset-0 pointer-events-none overflow-hidden" style={{ zIndex: 2147483647 }}>
