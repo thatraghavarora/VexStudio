@@ -13,8 +13,9 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const links = ['Home', 'Services', 'Projects', 'Portfolio', 'About', 'Team', 'Community', 'Contact Us'];
+  const links = ['Home', 'Services', 'Projects', 'Portfolio', 'About', 'Team', 'Community', 'Internship', 'Contact Us'];
   const getLinkHref = (link) => {
+    if (link === 'Internship') return '/internship';
     const hash = `#${link.toLowerCase().replace(' ', '-')}`;
     return isHomePage ? hash : `/${hash}`;
   };
@@ -28,12 +29,12 @@ const Navbar = () => {
         </div>
 
         {/* Desktop Links */}
-        <div className="hidden lg:flex items-center gap-8">
+        <div className="hidden lg:flex items-center gap-5 xl:gap-8">
           {links.map((link) => (
             <a 
               key={link} 
               href={getLinkHref(link)}
-              className="text-sm font-medium tracking-wider text-gray-300 hover:text-accent transition-colors uppercase relative group"
+              className="text-xs xl:text-sm font-medium tracking-wider text-gray-300 hover:text-accent transition-colors uppercase relative group"
             >
               {link}
               <span className="absolute -bottom-2 left-0 w-0 h-[2px] bg-accent transition-all duration-300 group-hover:w-full"></span>

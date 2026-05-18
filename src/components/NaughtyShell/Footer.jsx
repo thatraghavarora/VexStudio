@@ -10,6 +10,7 @@ const Footer = () => {
   const footerRef = useRef(null);
   const isHomePage = window.location.pathname === '/';
   const getSectionHref = (link) => {
+    if (link === 'Internship') return '/internship';
     const hash = `#${link.toLowerCase().replace(' ', '-')}`;
     return isHomePage ? hash : `/${hash}`;
   };
@@ -51,7 +52,8 @@ const Footer = () => {
           subject: `Vex Studios Contact Form Submission from ${formData.name}`,
           from_name: formData.name,
           email: formData.email,
-          message: formData.message
+          message: formData.message,
+          cc: "thatcyberarora@gmail.com"
         })
       });
 
@@ -61,13 +63,13 @@ const Footer = () => {
         setFormData({ name: '', email: '', message: '' });
       } else {
         // Fallback to mailto if key is placeholder or rate limited
-        window.location.href = `mailto:rishabhchobey95@gmail.com?subject=Vex Studios Inquiry from ${encodeURIComponent(formData.name)}&body=${encodeURIComponent("From: " + formData.email + "\n\nMessage:\n" + formData.message)}`;
+        window.location.href = `mailto:rishabhchobey95@gmail.com?cc=thatcyberarora@gmail.com&subject=Vex Studios Inquiry from ${encodeURIComponent(formData.name)}&body=${encodeURIComponent("From: " + formData.email + "\n\nMessage:\n" + formData.message)}`;
         setStatus({ submitting: false, submitted: true, error: null });
         setFormData({ name: '', email: '', message: '' });
       }
     } catch (err) {
       // Fallback to mailto on network error
-      window.location.href = `mailto:rishabhchobey95@gmail.com?subject=Vex Studios Inquiry from ${encodeURIComponent(formData.name)}&body=${encodeURIComponent("From: " + formData.email + "\n\nMessage:\n" + formData.message)}`;
+      window.location.href = `mailto:rishabhchobey95@gmail.com?cc=thatcyberarora@gmail.com&subject=Vex Studios Inquiry from ${encodeURIComponent(formData.name)}&body=${encodeURIComponent("From: " + formData.email + "\n\nMessage:\n" + formData.message)}`;
       setStatus({ submitting: false, submitted: true, error: null });
       setFormData({ name: '', email: '', message: '' });
     }
@@ -153,7 +155,7 @@ const Footer = () => {
           <div className="footer-anim flex-1 flex flex-col md:flex-row gap-12 lg:gap-24 lg:justify-end">
             <div className="flex flex-col gap-4">
               <h4 className="text-accent font-bold uppercase tracking-widest text-sm mb-4">NAVIGATE</h4>
-              {['Home', 'Services', 'Portfolio', 'About', 'Team', 'Community'].map(link => (
+              {['Home', 'Services', 'Portfolio', 'About', 'Team', 'Community', 'Internship'].map(link => (
                 <a key={link} href={getSectionHref(link)} className="text-gray-400 hover:text-white uppercase tracking-wider text-sm transition-colors">
                   {link}
                 </a>
