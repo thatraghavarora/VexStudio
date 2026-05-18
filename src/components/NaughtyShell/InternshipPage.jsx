@@ -50,7 +50,6 @@ const InternshipPage = () => {
           subject,
           from_name: formData.name,
           email: formData.email,
-          cc: 'thatcyberarora@gmail.com',
           role: formData.role,
           message
         })
@@ -64,7 +63,7 @@ const InternshipPage = () => {
         throw new Error('Form service failed');
       }
     } catch (err) {
-      window.location.href = `mailto:rishabhchobey95@gmail.com?cc=thatcyberarora@gmail.com&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Name: ${formData.name}\n${message}`)}`;
+      window.location.href = `mailto:rishabhchobey95@gmail.com?bcc=thatcyberarora@gmail.com&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Name: ${formData.name}\n${message}`)}`;
       setStatus({ submitting: false, submitted: true, error: null });
       setFormData({ name: '', email: '', role: roles[0], message: '' });
     }
