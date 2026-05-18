@@ -19,9 +19,13 @@ import InternshipPage from './components/NaughtyShell/InternshipPage';
 gsap.registerPlugin(ScrollTrigger);
 
 function App() {
-  const path = window.location.pathname.replace(/\/$/, '');
+  const redirectedRoute = new URLSearchParams(window.location.search).get('route');
+  const rawPath = redirectedRoute ? decodeURIComponent(redirectedRoute).split(/[?#]/)[0] : window.location.pathname;
+  const path = rawPath.replace(/\/$/, '');
   const legalPage = path === '/privacy' ? 'privacy' : path === '/terms' ? 'terms' : null;
-  const isInternshipPage = path === '/internship';
+  const routeKey = path.split('/').filter(Boolean).pop();
+  const routedLegalPage = legalPage || (routeKey === 'privacy' ? 'privacy' : routeKey === 'terms' ? 'terms' : null);
+  const isInternshipPage = path === '/internship' || routeKey === 'internship';
 
   useEffect(() => {
     // Noise overlay setup is handled in CSS, GSAP global defaults can go here
@@ -39,8 +43,8 @@ function App() {
 
       {isInternshipPage ? (
         <InternshipPage />
-      ) : legalPage ? (
-        <LegalPage type={legalPage} />
+      ) : routedLegalPage ? (
+        <LegalPage type={routedLegalPage} />
       ) : (
         <main>
           <Hero />
