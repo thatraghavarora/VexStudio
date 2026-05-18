@@ -210,7 +210,10 @@ const Team = () => {
 
           {/* Row 2 — Co-Founders */}
           <div className="flex flex-col md:flex-row items-center justify-center gap-8 w-full">
-            {members.filter(m => !m.accent).map((m, idx) => (
+            {members
+              .filter(m => !m.accent)
+              .sort((a, b) => (a.name === 'Raghav Arora' ? -1 : b.name === 'Raghav Arora' ? 1 : 0))
+              .map((m, idx) => (
               <React.Fragment key={m.name}>
                 {idx > 0 && (
                   <div className="flex md:hidden flex-col items-center w-full pointer-events-none select-none my-1">
