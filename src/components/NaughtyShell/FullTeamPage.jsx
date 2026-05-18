@@ -1,7 +1,7 @@
 import React from 'react';
 import { departmentLeads, hiringRoles, members } from './Team';
 
-const MemberNode = ({ member, featured = false }) => (
+const MemberNode = ({ member, featured = false, showName = true }) => (
   <div className={`relative w-full ${featured ? 'max-w-sm border-accent/50 bg-accent/10 shadow-[0_0_35px_rgba(255,69,0,0.16)]' : 'border-white/15 bg-white/[0.03]'} border rounded-xl p-6 text-center overflow-hidden`}>
     <div className="absolute -top-16 -right-16 w-36 h-36 rounded-full blur-3xl bg-accent/15 pointer-events-none" />
     <div className="mx-auto w-24 h-24 rounded-full border border-accent/60 overflow-hidden flex items-center justify-center mb-5 bg-accent/10">
@@ -12,8 +12,12 @@ const MemberNode = ({ member, featured = false }) => (
       )}
     </div>
     <p className="text-accent font-display text-[10px] uppercase tracking-[0.45em] mb-4">{member.role}</p>
-    <h2 className="text-white font-display font-black uppercase tracking-widest text-xl leading-tight">{member.name}</h2>
-    <div className="w-10 h-[2px] bg-accent mx-auto my-4" />
+    {showName && (
+      <>
+        <h2 className="text-white font-display font-black uppercase tracking-widest text-xl leading-tight">{member.name}</h2>
+        <div className="w-10 h-[2px] bg-accent mx-auto my-4" />
+      </>
+    )}
     <p className="text-gray-500 text-xs uppercase tracking-widest leading-relaxed">{member.title}</p>
   </div>
 );
@@ -22,9 +26,6 @@ const DepartmentNode = ({ label }) => (
   <div className="w-full border border-accent/25 bg-dark-800/70 rounded-xl p-5 text-center">
     <p className="text-accent font-display text-[10px] uppercase tracking-[0.45em] mb-2">Department</p>
     <h3 className="text-white font-display font-black uppercase tracking-widest text-base leading-relaxed">{label}</h3>
-    <span className="inline-flex mt-4 text-accent border border-accent/30 bg-accent/10 rounded-full px-3 py-1 text-[10px] uppercase tracking-widest font-display">
-      Hiring
-    </span>
   </div>
 );
 
@@ -71,7 +72,7 @@ const FullTeamPage = () => {
                   <div key={member.name} className="relative flex flex-col items-center">
                     <div className="hidden md:block absolute left-1/2 -top-8 w-[1px] h-8 bg-accent/30" />
 
-                    <MemberNode member={member} />
+                    <MemberNode member={member} showName={false} />
 
                     <div className="w-[1px] h-8 bg-white/20" />
 
@@ -86,7 +87,6 @@ const FullTeamPage = () => {
                             <div className="hidden sm:block absolute left-1/2 -top-4 w-[1px] h-4 bg-white/20" />
                             <div className="flex items-center justify-between gap-3 mb-4">
                               <span className="text-gray-600 font-display text-xs uppercase tracking-widest">0{index + 1}</span>
-                              <span className="text-gray-500 font-display text-[10px] uppercase tracking-widest">Open Role</span>
                             </div>
                             <h4 className="text-white font-display font-black uppercase tracking-widest text-sm leading-relaxed mb-3">
                               {role.title}
