@@ -42,27 +42,44 @@ const members = [
 const hiringRoles = [
   {
     title: 'Social Media Manager',
+    lead: 'Raghav Arora',
     detail: 'Hiring: we are looking for someone who can plan posts, manage community updates, and shape the public voice of Vex Studios.'
   },
   {
     title: 'Game Script Writer',
+    lead: 'Sahil Khan',
     detail: 'Hiring: we are looking for a writer who can build dark stories, character moments, dialogue, objectives, and horror narrative beats.'
   },
   {
     title: 'Game UI / UX Designer',
+    lead: 'Sahil Khan',
     detail: 'Hiring: we are looking for a designer who can create clean game interfaces, menus, HUD flows, and player-friendly interaction systems.'
   },
   {
     title: 'Sound / Effect Designer',
+    lead: 'Sahil Khan',
     detail: 'Hiring: we are looking for a sound-focused creator who can design atmospheric audio, SFX, ambience, and tension-building moments.'
   },
   {
     title: 'Web Developer',
+    lead: 'Raghav Arora',
     detail: 'Hiring: we are looking for a web developer who can build sharp, responsive, cinematic web experiences for Vex Studios.'
   },
   {
     title: 'Game Developer',
+    lead: 'Raghav Arora',
     detail: 'Hiring: we are looking for a developer who can work on Unreal Engine gameplay, mechanics, Blueprints, prototyping, and systems.'
+  },
+];
+
+const departmentLeads = [
+  {
+    name: 'Raghav Arora',
+    label: 'Growth / Web / Development',
+  },
+  {
+    name: 'Sahil Khan',
+    label: 'Narrative / UI / Sound',
   },
 ];
 
@@ -413,8 +430,8 @@ const Team = () => {
                 <div className="w-full border border-white/10 bg-black/20 rounded-xl p-5 md:p-6">
                   <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6">
                     <div>
-                      <p className="text-accent font-display text-[10px] uppercase tracking-[0.45em] mb-3">Open Positions</p>
-                      <h4 className="text-white font-display font-black uppercase tracking-widest text-2xl">Hiring Team</h4>
+                      <p className="text-accent font-display text-[10px] uppercase tracking-[0.45em] mb-3">Department Graph</p>
+                      <h4 className="text-white font-display font-black uppercase tracking-widest text-2xl">Hiring Team Structure</h4>
                     </div>
                     <a
                       href="/internship"
@@ -424,22 +441,41 @@ const Team = () => {
                     </a>
                   </div>
 
-                  <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                    {hiringRoles.map((role, index) => (
-                      <article key={role.title} className="border border-white/10 bg-dark-800/70 rounded-lg p-5 hover:border-accent/50 transition-colors">
-                        <div className="flex items-center justify-between gap-3 mb-4">
-                          <span className="text-gray-600 font-display text-xs uppercase tracking-widest">0{index + 1}</span>
-                          <span className="text-accent border border-accent/30 bg-accent/10 rounded-full px-3 py-1 text-[10px] uppercase tracking-widest font-display">
+                  <div className="grid lg:grid-cols-2 gap-6">
+                    {departmentLeads.map((lead) => (
+                      <div key={lead.name} className="relative border border-white/10 bg-dark-800/50 rounded-xl p-5">
+                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-5 pb-5 border-b border-white/10">
+                          <div>
+                            <p className="text-accent font-display text-[10px] uppercase tracking-[0.45em] mb-2">Under</p>
+                            <h5 className="text-white font-display font-black uppercase tracking-widest text-lg">{lead.name}</h5>
+                            <p className="text-gray-500 text-xs uppercase tracking-widest mt-2">{lead.label}</p>
+                          </div>
+                          <span className="self-start sm:self-center text-accent border border-accent/30 bg-accent/10 rounded-full px-3 py-1 text-[10px] uppercase tracking-widest font-display">
                             Hiring
                           </span>
                         </div>
-                        <h5 className="text-white font-display font-black uppercase tracking-widest text-sm leading-relaxed mb-3">
-                          {role.title}
-                        </h5>
-                        <p className="text-gray-500 text-sm leading-relaxed">
-                          {role.detail}
-                        </p>
-                      </article>
+
+                        <div className="space-y-4">
+                          {hiringRoles
+                            .filter((role) => role.lead === lead.name)
+                            .map((role, index) => (
+                              <article key={role.title} className="border border-white/10 bg-black/20 rounded-lg p-5 hover:border-accent/50 transition-colors">
+                                <div className="flex items-center justify-between gap-3 mb-4">
+                                  <span className="text-gray-600 font-display text-xs uppercase tracking-widest">0{index + 1}</span>
+                                  <span className="text-gray-500 font-display text-[10px] uppercase tracking-widest">
+                                    Open Role
+                                  </span>
+                                </div>
+                                <h6 className="text-white font-display font-black uppercase tracking-widest text-sm leading-relaxed mb-3">
+                                  {role.title}
+                                </h6>
+                                <p className="text-gray-500 text-sm leading-relaxed">
+                                  {role.detail}
+                                </p>
+                              </article>
+                            ))}
+                        </div>
+                      </div>
                     ))}
                   </div>
                 </div>
