@@ -2,6 +2,10 @@ import React from 'react';
 import { departmentLeads, hiringRoles, members } from './Team';
 
 const FullTeamPage = () => {
+  const coFounders = members
+    .filter((m) => !m.accent)
+    .sort((a, b) => (a.name === 'Raghav Arora' ? -1 : b.name === 'Raghav Arora' ? 1 : 0));
+
   return (
     <main className="min-h-screen bg-dark-900 pt-28 pb-20">
       <section className="max-w-7xl mx-auto px-6 md:px-12">
@@ -24,7 +28,7 @@ const FullTeamPage = () => {
           </a>
         </div>
 
-        <div className="border border-white/10 bg-black/20 rounded-2xl p-6 md:p-10">
+        <div className="border border-white/10 bg-black/20 rounded-2xl p-6 md:p-10 overflow-hidden">
           <div className="flex flex-col items-center">
             <div className="w-full max-w-sm border border-accent/50 bg-accent/10 rounded-xl p-6 text-center shadow-[0_0_35px_rgba(255,69,0,0.16)]">
               <p className="text-accent font-display text-[10px] uppercase tracking-[0.45em] mb-3">Founder</p>
@@ -32,48 +36,41 @@ const FullTeamPage = () => {
               <p className="text-gray-500 text-xs uppercase tracking-widest mt-3">Creative Direction / Unreal Development</p>
             </div>
 
-            <div className="w-[1px] h-10 bg-accent/40" />
-            <div className="hidden md:block w-full max-w-2xl h-[1px] bg-accent/30" />
-            <div className="grid md:grid-cols-2 gap-6 w-full max-w-3xl mt-0 md:mt-6">
-              {members
-                .filter((m) => !m.accent)
-                .sort((a, b) => (a.name === 'Raghav Arora' ? -1 : b.name === 'Raghav Arora' ? 1 : 0))
-                .map((member) => (
-                  <div key={member.name} className="relative border border-white/15 bg-white/[0.03] rounded-xl p-6 text-center">
-                    <div className="hidden md:block absolute left-1/2 -top-6 w-[1px] h-6 bg-accent/30" />
-                    <p className="text-accent font-display text-[10px] uppercase tracking-[0.45em] mb-3">Co-Founder</p>
-                    <h3 className="text-white font-display font-black uppercase tracking-widest text-lg">{member.name}</h3>
-                    <p className="text-gray-500 text-xs uppercase tracking-widest mt-3">{member.title}</p>
-                  </div>
-                ))}
-            </div>
+            <div className="w-[1px] h-12 bg-accent/40" />
+            <div className="hidden md:block w-full max-w-5xl h-[1px] bg-accent/30" />
 
-            <div className="w-[1px] h-12 bg-white/20" />
-            <div className="w-full border border-white/10 bg-dark-900/80 rounded-xl p-5 md:p-6">
-              <div className="mb-6">
-                <p className="text-accent font-display text-[10px] uppercase tracking-[0.45em] mb-3">Department Graph</p>
-                <h2 className="text-white font-display font-black uppercase tracking-widest text-2xl">Hiring Team Structure</h2>
-              </div>
+            <div className="grid md:grid-cols-2 gap-10 w-full max-w-6xl mt-0 md:mt-8">
+              {coFounders.map((member) => {
+                const lead = departmentLeads.find((item) => item.name === member.name);
+                const roles = hiringRoles.filter((role) => role.lead === member.name);
 
-              <div className="grid lg:grid-cols-2 gap-6">
-                {departmentLeads.map((lead) => (
-                  <div key={lead.name} className="relative border border-white/10 bg-dark-800/50 rounded-xl p-5">
-                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-5 pb-5 border-b border-white/10">
-                      <div>
-                        <p className="text-accent font-display text-[10px] uppercase tracking-[0.45em] mb-2">Under</p>
-                        <h3 className="text-white font-display font-black uppercase tracking-widest text-lg">{lead.name}</h3>
-                        <p className="text-gray-500 text-xs uppercase tracking-widest mt-2">{lead.label}</p>
-                      </div>
-                      <span className="self-start sm:self-center text-accent border border-accent/30 bg-accent/10 rounded-full px-3 py-1 text-[10px] uppercase tracking-widest font-display">
+                return (
+                  <div key={member.name} className="relative flex flex-col items-center">
+                    <div className="hidden md:block absolute left-1/2 -top-8 w-[1px] h-8 bg-accent/30" />
+
+                    <div className="w-full border border-white/15 bg-white/[0.03] rounded-xl p-6 text-center">
+                      <p className="text-accent font-display text-[10px] uppercase tracking-[0.45em] mb-3">Co-Founder</p>
+                      <h3 className="text-white font-display font-black uppercase tracking-widest text-lg">{member.name}</h3>
+                      <p className="text-gray-500 text-xs uppercase tracking-widest mt-3">{member.title}</p>
+                    </div>
+
+                    <div className="w-[1px] h-8 bg-white/20" />
+
+                    <div className="w-full border border-white/10 bg-dark-800/50 rounded-xl p-5 text-center">
+                      <p className="text-accent font-display text-[10px] uppercase tracking-[0.45em] mb-2">Department</p>
+                      <h4 className="text-white font-display font-black uppercase tracking-widest text-base">{lead?.label}</h4>
+                      <span className="inline-flex mt-4 text-accent border border-accent/30 bg-accent/10 rounded-full px-3 py-1 text-[10px] uppercase tracking-widest font-display">
                         Hiring
                       </span>
                     </div>
 
-                    <div className="space-y-4">
-                      {hiringRoles
-                        .filter((role) => role.lead === lead.name)
-                        .map((role, index) => (
-                          <article key={role.title} className="border border-white/10 bg-black/20 rounded-lg p-5 hover:border-accent/50 transition-colors">
+                    <div className="w-[1px] h-8 bg-white/20" />
+                    <div className="relative w-full">
+                      <div className="hidden sm:block absolute left-1/2 top-0 bottom-0 w-[1px] bg-white/10" />
+                      <div className="space-y-4">
+                        {roles.map((role, index) => (
+                          <article key={role.title} className="relative border border-white/10 bg-black/20 rounded-lg p-5 hover:border-accent/50 transition-colors">
+                            <div className="hidden sm:block absolute left-1/2 -top-4 w-[1px] h-4 bg-white/20" />
                             <div className="flex items-center justify-between gap-3 mb-4">
                               <span className="text-gray-600 font-display text-xs uppercase tracking-widest">0{index + 1}</span>
                               <span className="text-gray-500 font-display text-[10px] uppercase tracking-widest">Open Role</span>
@@ -86,10 +83,11 @@ const FullTeamPage = () => {
                             </p>
                           </article>
                         ))}
+                      </div>
                     </div>
                   </div>
-                ))}
-              </div>
+                );
+              })}
             </div>
           </div>
         </div>
