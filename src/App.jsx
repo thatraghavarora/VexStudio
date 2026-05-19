@@ -13,8 +13,6 @@ import Team from './components/NaughtyShell/Team';
 import ReviewsNews from './components/NaughtyShell/ReviewsNews';
 import Footer from './components/NaughtyShell/Footer';
 import CustomCursor from './components/NaughtyShell/CustomCursor';
-import LegalPage from './components/NaughtyShell/LegalPage';
-import InternshipPage from './components/NaughtyShell/InternshipPage';
 import FullTeamPage from './components/NaughtyShell/FullTeamPage';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -23,10 +21,7 @@ function App() {
   const redirectedRoute = new URLSearchParams(window.location.search).get('route');
   const rawPath = redirectedRoute ? decodeURIComponent(redirectedRoute).split(/[?#]/)[0] : window.location.pathname;
   const path = rawPath.replace(/\/$/, '');
-  const legalPage = path === '/privacy' ? 'privacy' : path === '/terms' ? 'terms' : null;
   const routeKey = path.split('/').filter(Boolean).pop();
-  const routedLegalPage = legalPage || (routeKey === 'privacy' ? 'privacy' : routeKey === 'terms' ? 'terms' : null);
-  const isInternshipPage = path === '/internship' || routeKey === 'internship';
   const isFullTeamPage = path === '/team' || routeKey === 'team';
 
   useEffect(() => {
@@ -45,10 +40,6 @@ function App() {
 
       {isFullTeamPage ? (
         <FullTeamPage />
-      ) : isInternshipPage ? (
-        <InternshipPage />
-      ) : routedLegalPage ? (
-        <LegalPage type={routedLegalPage} />
       ) : (
         <main>
           <Hero />

@@ -48,12 +48,6 @@ const FullTeamPage = () => {
               Full Team Graph
             </h1>
           </div>
-          <a
-            href="/internship"
-            className="self-start md:self-end px-6 py-3 border border-accent/40 bg-accent/10 text-accent hover:bg-accent hover:text-black rounded-lg font-display text-xs uppercase tracking-widest transition-colors"
-          >
-            Apply for Internship
-          </a>
         </div>
 
         <div className="border border-white/10 bg-black/20 rounded-2xl p-6 md:p-10 overflow-hidden">
