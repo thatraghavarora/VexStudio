@@ -86,6 +86,12 @@ const Footer = () => {
             <h2 className="text-4xl md:text-5xl font-display font-black uppercase tracking-widest text-white mb-12">
               GET IN TOUCH <br/> WITH <span className="text-accent">US</span>
             </h2>
+            <a
+              href={`mailto:${contactEmail}`}
+              className="inline-flex mb-10 text-accent hover:text-white font-display text-xs uppercase tracking-[0.35em] transition-colors"
+            >
+              {contactEmail}
+            </a>
             
             {status.submitted ? (
               <div className="p-8 bg-gradient-to-br from-dark-800 to-dark-900 border border-accent/40 rounded-xl text-white flex flex-col gap-4 shadow-[0_0_30px_rgba(255,69,0,0.15)] animate-fade-in">
