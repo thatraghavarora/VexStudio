@@ -11,6 +11,7 @@ const Footer = () => {
   const isHomePage = window.location.pathname === '/';
   const contactEmail = 'vexstd.org@gmail.com';
   const getSectionHref = (link) => {
+    if (link === 'Internship') return '/internship';
     const hash = `#${link.toLowerCase().replace(' ', '-')}`;
     return isHomePage ? hash : `/${hash}`;
   };
@@ -154,7 +155,7 @@ const Footer = () => {
           <div className="footer-anim flex-1 flex flex-col md:flex-row gap-12 lg:gap-24 lg:justify-end">
             <div className="flex flex-col gap-4">
               <h4 className="text-accent font-bold uppercase tracking-widest text-sm mb-4">NAVIGATE</h4>
-              {['Home', 'Services', 'Portfolio', 'About', 'Team', 'Community'].map(link => (
+              {['Home', 'Services', 'Portfolio', 'About', 'Team', 'Community', 'Internship'].map(link => (
                 <a key={link} href={getSectionHref(link)} className="text-gray-400 hover:text-white uppercase tracking-wider text-sm transition-colors">
                   {link}
                 </a>
@@ -179,6 +180,10 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-white/10 text-xs font-medium uppercase tracking-widest text-gray-500 gap-4">
           <p>© 2026 VEX STUDIOS. ALL PROTOCOLS OBSERVED.</p>
+          <div className="flex gap-8">
+            <a href="/privacy" className="hover:text-white transition-colors">PRIVACY</a>
+            <a href="/terms" className="hover:text-white transition-colors">TERMS</a>
+          </div>
         </div>
       </div>
 

@@ -13,8 +13,9 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const links = ['Home', 'Services', 'Projects', 'Portfolio', 'About', 'Team', 'Community', 'Contact Us'];
+  const links = ['Home', 'Services', 'Projects', 'Portfolio', 'About', 'Team', 'Community', 'Internship', 'Contact Us'];
   const getLinkHref = (link) => {
+    if (link === 'Internship') return '/internship';
     const hash = `#${link.toLowerCase().replace(' ', '-')}`;
     return isHomePage ? hash : `/${hash}`;
   };

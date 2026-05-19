@@ -361,7 +361,20 @@ const Team = () => {
             >
               View Full Team
             </a>
+            <a
+              href="https://docs.google.com/forms/d/e/1FAIpQLSe10k18nhvFuTBKMzZZOKcF2xSjp52lQ_yss3ZJwZAp_VSGpA/viewform?usp=header"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative overflow-hidden flex items-center justify-center gap-3 w-full sm:w-auto px-8 py-4 bg-accent text-black font-display font-black text-sm uppercase tracking-widest rounded-xl hover:shadow-[0_0_30px_rgba(255,69,0,0.5)] transition-all duration-300"
+            >
+              <span className="relative z-10">Apply Now</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="relative z-10 group-hover:translate-x-1 transition-transform duration-300">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+              <div className="absolute inset-0 bg-white translate-x-full group-hover:translate-x-0 transition-transform duration-300 z-0" />
+            </a>
           </div>
+          <p className="mt-4 text-center text-gray-600 text-[10px] uppercase tracking-widest font-display">via our official google form</p>
         </div>
         </div>
 
