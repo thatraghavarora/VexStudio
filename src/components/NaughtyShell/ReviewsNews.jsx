@@ -85,7 +85,7 @@ const ReviewsNews = () => {
             
             <div className="relative z-10">
               <div className="flex items-center gap-3 mb-6 justify-center md:justify-start">
-                <span className="text-indigo-400 font-bold tracking-widest uppercase text-xs">STATUS // IN DEVELOPMENT</span>
+                <span className="text-indigo-400 font-bold tracking-widest uppercase text-xs">STATUS // LIVE SERVER</span>
               </div>
               
               <h3 className="text-2xl md:text-4xl font-display font-bold text-white mb-6 leading-tight text-center md:text-left">
@@ -93,17 +93,22 @@ const ReviewsNews = () => {
               </h3>
               
               <p className="text-gray-300 text-base md:text-lg leading-relaxed mb-10 text-center md:text-left max-w-2xl">
-                Get ready for our public Discord launch! Exclusive channels for Unreal Engine blueprints, 3D asset drops, live Q&As with lead developers, and community game jams.
+                Join the official Vex Studios Discord for Unreal Engine blueprints, 3D asset drops, live Q&As with lead developers, and community game jams.
               </p>
             </div>
 
             <div className="flex justify-center md:justify-start z-10 w-full">
-              <div className="relative overflow-hidden border border-indigo-500/50 bg-indigo-500/10 text-indigo-300 font-bold uppercase tracking-widest px-6 md:px-10 py-4 md:py-5 rounded font-display text-xs md:text-base cursor-not-allowed flex items-center justify-center gap-3 w-full md:w-auto">
-                <span>COMING SOON</span>
-                <svg className="w-5 h-5 md:w-6 md:h-6 fill-current text-indigo-400 shrink-0" viewBox="0 0 24 24">
+              <a
+                href="https://discord.gg/ecnYR8bAuH"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="relative overflow-hidden bg-indigo-500 text-white font-bold uppercase tracking-widest px-6 md:px-10 py-4 md:py-5 rounded font-display text-xs md:text-base shadow-[0_0_25px_rgba(99,102,241,0.5)] hover:shadow-[0_0_45px_rgba(99,102,241,0.9)] hover:bg-indigo-400 transition-all duration-300 flex items-center justify-center gap-3 w-full md:w-auto text-center"
+              >
+                <span>JOIN DISCORD</span>
+                <svg className="w-5 h-5 md:w-6 md:h-6 fill-current text-white shrink-0" viewBox="0 0 24 24">
                   <path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8zm1-13h-2v6l5.25 3.15.75-1.23-4-2.37V7z"/>
                 </svg>
-              </div>
+              </a>
             </div>
           </div>
         </div>
